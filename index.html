@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Compress</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #fcfcfc;
+            font-family: 'Poppins', sans-serif;
+        }
+        .app-container {
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 800px;
+        }
+        h2 {
+            margin: 0;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 30px;
+        }
+        .upload-box {
+            font-size: 12px;
+            background: white;
+            border-radius: 50px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            width: 350px;
+            outline: none;
+        }
+
+        ::-webkit-file-upload-button {
+            color: white;
+            background: #80669d;
+            padding: 10px;
+            border: none;
+            border-radius: 50px;
+            outline: none;
+        }
+
+        ::-webkit-file-upload-button:hover {
+            background: #999;
+        }
+        .submit-button{
+            color: white;
+            background: #80669d;
+            padding: 10px;
+            border: none;
+            border-radius: 50px;
+            width: 100px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            outline: none;
+        }
+        .submit-button:hover {
+            background: #999;
+        }
+        .translate-button{
+            color: white;
+            background: #80669d;
+            padding: 10px;
+            border: none;
+            border-radius: 50px;
+            width: 150px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            outline: none;
+        }
+        .translate-button:hover {
+            background: #999;
+        }
+        .file_info {
+            font-size: 10px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3em;
+            width: 100%;
+        }
+        .img-text-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            width: 100%;
+        }
+        .image-container {
+            max-width: 200px;
+            max-height: 200px;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .button-style {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .side-by-side-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            width: 100%;
+        }
+        .image-style {
+             max-width: 100%;
+             height:80%
+        }
+        .div1, .div2 {
+            width: 45%;
+            background-color: #fff;
+            box-shadow: 5px 5px 25px #0000005f;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+        }
+        @media (max-width: 1200px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .side-by-side-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .div1, .div2 {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="Container">
+            <div class="item">
+                <h2>Compress Image</h2>
+                <div class="input-container">
+                    <form class="form" method="POST" action="/" enctype="multipart/form-data">
+                        <input type="file" class="upload-box" name="files[]" multiple autocomplete="off" required
+                               accept=".jpg, .jpeg, .png, .pdf, .gif, .tif"/>
+                        <input type="submit" class="submit-button" value="Upload">
+                    </form>
+                </div>
+                <p class="file_info">only supported jpg, jpeg, png, pdf, gif, tif</p>
+            </div>
+        </div>
+<!--           <div class="side-by-side-container">-->
+<!--               <div class="div1">-->
+<!--                   <div class="img-text-container">-->
+<!--                       {% if file_url %}-->
+<!--                       <figure class="image-container">-->
+<!--                           <img class="image-style" src="{{ file_url }}" style="width=300px; height:300px;">-->
+<!--                       </figure>-->
+<!--                       {% endif %}-->
+<!--                       </div>-->
+<!--                       <div class="img-text-container">-->
+<!--                           {% if upload_url %}-->
+<!--                           <figure class="image-container">-->
+<!--                               <img class="image-style" src="{{ upload_url }}" style="width=300px; height:300px;">-->
+<!--                           </figure>-->
+<!--                           {% endif %}-->
+<!--                       </div>-->
+<!--                   </div>-->
+<!--                   <div class="button-style">-->
+<!--                       <div class="convert_button">-->
+<!--                           <form id="fetchForm" method="post" action='/compressed_image'-->
+<!--                                 enctype="multipart/form-data">-->
+<!--                               <input id="fetchButton" type="submit" class="translate-button" value="Compressed Image">-->
+<!--                           </form>-->
+<!--                       </div>-->
+<!--                   </div>-->
+<!--               </div>-->
+
+<!--               <div class="div2">-->
+<!--                   <div class="img-text-container">-->
+<!--                       {% if upload_url %}-->
+<!--                       <figure class="image-container">-->
+<!--                           <img class="image-style" src="{{ upload_url }}" style="width=300px; height:300px;">-->
+<!--                       </figure>-->
+<!--                       {% endif %}-->
+<!--                   </div>-->
+<!--           </div>-->
+           <div class="img-text-container">
+               {% if image_names %}
+                    {% for img in image_names %}
+                        <div class="mt-5">
+                           <div class="image-container">
+                               <img class="image-style" src="{{ url_for('get_file', filename=img) }}" width="400px" alt="Image">
+                           </div>
+                       </div>
+                    {% endfor %}
+               {% endif %}
+<!--               <div class="wrapper">-->
+<!--                   {% if upload_url %}-->
+<!--                   <div class="mt-5">-->
+<!--                       <div class="image-container">-->
+<!--                            <img class="image-style" src="{{ upload_url }}" width="200px" alt="Image">-->
+<!--                       </div>-->
+<!--                   </div>-->
+<!--                   {% endif %}-->
+<!--               </div>-->
+           </div>
+
+           <a href="{{ url_for('download_file') }}"><button class="submit-button">Download</button></a>
+           <!--           <div class="button-style">-->
+<!--               <div class="convert_button">-->
+<!--                   <form method="post" action="/compressed_image" enctype="multipart/form-data">-->
+<!--                       <input type="submit" class="translate-button" value="Convert to Text">-->
+
+<!--                   </form>-->
+<!--               </div>-->
+<!--           </div>-->
+<!--       </div>-->
+        <a href="/back_to_homepage">Go back to homepage</a>
+    </div>
+
+</body>
+</html>
