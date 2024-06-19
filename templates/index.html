@@ -148,14 +148,19 @@
                 width: 80%;
             }
         } */
+        /* General styles for mobile devices first */
         .container, .side-by-side-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center; /* Center text */
+            font-size: 18px; /* Increase font size for better readability on mobile */
         }
+
         .div1, .div2 {
             width: 100%;
         }
+
         /* For tablets and smaller devices */
         @media (min-width: 481px) and (max-width: 768px) {
             .div1, .div2 {
@@ -167,6 +172,13 @@
         @media (min-width: 769px) and (max-width: 1200px) {
             .div1, .div2 {
                 width: 80%;
+            }
+        }
+
+        /* For even smaller mobile devices */
+        @media (max-width: 480px) {
+            .container, .side-by-side-container {
+                font-size: 16px; /* Further increase font size for smaller screens */
             }
         }
     </style>
