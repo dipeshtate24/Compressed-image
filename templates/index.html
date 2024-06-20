@@ -162,12 +162,15 @@
         }
 
         /* For tablets and smaller devices */
-        @media (min-width: 481px) and (max-width: 768px) {
+       @media (min-width: 481px) and (max-width: 768px) {
             .div1, .div2 {
                 width: 90%; /* Adjusted width for better fit on tablets */
             }
+            .app-container {
+                margin-bottom: 100%;
+                font-size: 50px;
+            }
         }
-
         /* For desktops and larger tablets */
         @media (min-width: 769px) and (max-width: 1200px) {
             .div1, .div2 {
